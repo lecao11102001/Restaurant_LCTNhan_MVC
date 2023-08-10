@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant_MVC.Data;
 using Restaurant_MVC.Models;
@@ -12,7 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbDSN")));
 
 builder.Services.AddSingleton<IDataSharingService, DataSharingService>();
-//builder.Services.AddTransient<ILogin, LoginService>();
+builder.Services.AddTransient<ISpecialties, SpecialtiesService>();
+builder.Services.AddTransient<IHome, HomeService>();
+builder.Services.AddTransient<IReservation, ReservationService>();
 
 //builder.Services.AddSession();
 

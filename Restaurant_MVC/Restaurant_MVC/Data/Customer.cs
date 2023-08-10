@@ -45,5 +45,8 @@ namespace Restaurant_MVC.Data
         public DateTime? DeleteDate { get; set; }
 
         public Guid? DeleteById { get; set; }
+
+        [InverseProperty("Customer")]
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

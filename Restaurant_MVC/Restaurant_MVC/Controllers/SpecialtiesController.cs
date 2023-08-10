@@ -4,31 +4,33 @@ using Restaurant_MVC.Data;
 using Restaurant_MVC.Models.SharedDataDictionary;
 using Restaurant_MVC.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 
 namespace Restaurant_MVC.Controllers
 {
     public class SpecialtiesController : Controller
     {
-        private readonly RestaurantsDbContext _restaurantsDbContext;
-        public SpecialtiesController(RestaurantsDbContext restaurantsDbContext)
+        private readonly ISpecialties _iSpecialties;
+
+        public SpecialtiesController(ISpecialties iSpecialties)
         {
-            _restaurantsDbContext = restaurantsDbContext;
+            _iSpecialties = iSpecialties;
         }
         // GET: Specialties
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            ModelModel model = new ModelModel();
-            model.ListFoodCategories = _restaurantsDbContext.FoodCategories.ToList();
-            model.ListFoodItems = _restaurantsDbContext.FoodItems.ToList();
+            var pagedFoodItems = _iSpecialties.GetPagedFoodItems(page);
+            var allFoodCategories = _iSpecialties.GetAllFoodCategories();
+
+            var model = new ModelModel
+            {
+                ListFoodItems = pagedFoodItems.Items,
+                CurrentPage = pagedFoodItems.CurrentPage,
+                TotalPages = pagedFoodItems.TotalPages,
+                ListFoodCategories = allFoodCategories
+            };
 
             return View(model);
         }
-        public IActionResult ProductsByCategory(Guid categoryId)
-        {
-            var productsInCategory = _restaurantsDbContext.FoodItems.Where(s => s.FoodCategoryId == categoryId).ToList();
-
-            return View(productsInCategory);
-        }
-
     }
 }

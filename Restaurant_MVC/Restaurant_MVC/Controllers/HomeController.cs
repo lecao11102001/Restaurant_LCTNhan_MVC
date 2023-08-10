@@ -15,17 +15,33 @@ namespace Restaurant_MVC.Controllers
     {
         private readonly IDataSharingService _dataSharingService;
         private readonly RestaurantsDbContext _restaurantsDbContext;
+        private readonly IHome _iHome;
 
-        public HomeController(RestaurantsDbContext restaurantsDbContext, IDataSharingService dataSharingService)
+        public HomeController(IHome iHome, RestaurantsDbContext restaurantsDbContext, IDataSharingService dataSharingService)
         {
             _restaurantsDbContext = restaurantsDbContext;
             _dataSharingService = dataSharingService;
+            _iHome = iHome;
         }
 
         public IActionResult Index()
         {
-            var menuItems = new List<string> { "Home", "Specialties", "About", "Stories", "Reservation", "Contact" };
-            return View(menuItems);
+            //var menuItems = new List<string> {"About", "Specialties", "Stories", "Reservation", "ContactUs" };
+
+            //var result = new ModelModel();
+            //result.listMenu = menuItems;
+            //result.ListFoodCategories = _restaurantsDbContext.FoodCategories.ToList();
+
+            var allFoodCategories = _iHome.GetAllFoodCategories();
+            var allFoodItems = _iHome.GetAllFoodItems();
+
+            var model = new ModelModel
+            {
+                ListFoodCategories = allFoodCategories,
+                ListFoodItems = allFoodItems
+            };
+
+            return View(model);
         }
 
         public IActionResult Login()

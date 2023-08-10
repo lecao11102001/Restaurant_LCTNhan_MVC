@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant_MVC.Data;
 
@@ -11,9 +12,11 @@ using Restaurant_MVC.Data;
 namespace Restaurant_MVC.Migrations
 {
     [DbContext(typeof(RestaurantsDbContext))]
-    partial class RestaurantsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230809081332_Add_Table_Reservation_Lan1")]
+    partial class Add_Table_Reservation_Lan1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +84,7 @@ namespace Restaurant_MVC.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Data.FoodCategory", b =>
@@ -114,7 +117,7 @@ namespace Restaurant_MVC.Migrations
 
                     b.HasKey("FoodCategoryId");
 
-                    b.ToTable("FoodCategory", (string)null);
+                    b.ToTable("FoodCategory");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Data.FoodItem", b =>
@@ -161,7 +164,7 @@ namespace Restaurant_MVC.Migrations
 
                     b.HasIndex("FoodCategoryId");
 
-                    b.ToTable("FoodItem", (string)null);
+                    b.ToTable("FoodItem");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Data.Reservation", b =>
@@ -216,7 +219,7 @@ namespace Restaurant_MVC.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Reservation", (string)null);
+                    b.ToTable("Reservation");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Data.FoodItem", b =>

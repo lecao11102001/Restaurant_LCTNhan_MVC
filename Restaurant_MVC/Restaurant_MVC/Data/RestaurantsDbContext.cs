@@ -12,6 +12,7 @@ namespace Restaurant_MVC.Data
         public DbSet<Customer>? Customers { get; set; }
         public DbSet<FoodCategory>? FoodCategories { get; set; }
         public DbSet<FoodItem>? FoodItems { get; set; }
+        public DbSet<Reservation>? Reservations { get; set; }
 
         #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)

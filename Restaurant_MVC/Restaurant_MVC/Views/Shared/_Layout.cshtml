@@ -4,7 +4,7 @@
 @using System.Net;
 @using Restaurant_MVC.Controllers;
 @using Restaurant_MVC.Models.SharedDataDictionary;
-@inject IDataSharingService DataSharingService
+@inject IDataSharingService DataSharingService;
 
 @{
     var username = DataSharingService.GetSharedData("username");
@@ -38,7 +38,9 @@
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="/css/responsive.css" rel="stylesheet" />
+    <link href="/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="/css/jquery.timepicker.css" rel="stylesheet" />
 </head>
 <body>
     <div class="hero_area">
@@ -64,37 +66,22 @@
                             @*<li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                             </li>*@
-                            @*@foreach (var item in Model)
-                            {
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">@item</a>
-                            </li>
-                            }*@
                             <li class="nav-item active">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
+                            @*@foreach (var item in Model)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="@item" asp-action="Index" >@item</a>
+                                </li>
+                            }*@
+                            
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Specialties" asp-action="Index">Specialties</a>
                             </li>
-
-                            @*<li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                            </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="#">Specialties</a>
+                                <a class="nav-link" asp-controller="Reservation" asp-action="Index">Reservation</a>
                             </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Stories</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Reservation</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
-                            </li>*@
                         </ul>
                         <div class="user_option">
                             <a href="#" class="user_link" onclick="toggleUserPopup()">
@@ -309,6 +296,7 @@
     <!-- bootstrap js -->
     <script src="/js/bootstrap.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/js/jquery.timepicker.min.js"></script>
     <!-- owl slider -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
     </script>
@@ -319,8 +307,7 @@
     <!-- custom js -->
     <script src="/js/custom.js"></script>
     <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
     <!-- End Google Map -->
 </body>
 </html>
