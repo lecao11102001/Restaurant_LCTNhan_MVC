@@ -16,6 +16,7 @@ builder.Services.AddSingleton<IDataSharingService, DataSharingService>();
 builder.Services.AddTransient<ISpecialties, SpecialtiesService>();
 builder.Services.AddTransient<IHome, HomeService>();
 builder.Services.AddTransient<IReservation, ReservationService>();
+builder.Services.AddTransient<IContactUs, ContactUsService>();
 
 //builder.Services.AddSession();
 

@@ -1,21 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
+using System.Net;
 
 namespace Restaurant_MVC.Data
 {
-    [Table("Customers")]
-    public class Customer
+    [Table("Restaurants")]
+    public class Restaurants
     {
         [Key]
-        public Guid CustomerId { get; set; }
+        public Guid RestaurantsId { get; set; }
 
         [MaxLength(255)]
         public string? Name { get; set; }
 
-        public bool? Gender { get; set; }
-
-        [MaxLength(255)]
+        [MaxLength(500)]
         public string? Address { get; set; }
 
         [MaxLength(10)]
@@ -24,15 +22,8 @@ namespace Restaurant_MVC.Data
         [MaxLength(255)]
         public string? Email { get; set; }
 
-        [MaxLength(255)]
-        public string? UserName { get; set; }
-
-        [MaxLength(100)]
-        public string? PassWord { get; set; }
-
-        public string? Role { get; set; }
-
-        public DateTime? DateOfBirth { get; set; }
+        [MaxLength(4000)]
+        public string? Website { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -45,11 +36,5 @@ namespace Restaurant_MVC.Data
         public DateTime? DeleteDate { get; set; }
 
         public Guid? DeleteById { get; set; }
-
-        [InverseProperty("Customer")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
-
-        [InverseProperty("Customer")]
-        public virtual ICollection<ContactUs> ContactUss { get; set; }
     }
 }

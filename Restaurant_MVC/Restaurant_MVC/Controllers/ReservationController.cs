@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurant_MVC.Models;
 using System.Net.Mail;
 using System.Net;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Restaurant_MVC.Controllers
 {
     public class ReservationController : Controller
     {
         private readonly IReservation _ireservation;
+
         public ReservationController(IReservation ireservation)
         {
             _ireservation = ireservation;
@@ -20,8 +20,6 @@ namespace Restaurant_MVC.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Route("api/[controller]")]
         public async Task<IActionResult> MakeReservation(ReservationModel model)
         {
             // Thêm vào database

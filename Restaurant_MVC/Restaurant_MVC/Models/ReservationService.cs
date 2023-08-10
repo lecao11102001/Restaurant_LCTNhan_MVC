@@ -13,10 +13,6 @@ namespace Restaurant_MVC.Models
         }
         public void AddMakeReservation(ReservationModel reservation)
         {
-
-            // Thực hiện logic lưu thông tin đặt bàn vào cơ sở dữ liệu
-
-            // Lưu thông tin đặt bàn vào cơ sở dữ liệu
             var reservations = new Reservation
             {
                 ReservationsId = Guid.NewGuid(),

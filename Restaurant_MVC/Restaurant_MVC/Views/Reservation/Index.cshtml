@@ -101,19 +101,19 @@
                             <input style="display: none;" type="text" id="reservationId" name="CustomerId" class="form-control" value="@DataSharingService.GetSharedData("customerid")">
                         </div>
                         <div>
-                            <input required type="text" name="Name" class="form-control" value="@DataSharingService.GetSharedData("name")">
+                            <input required type="text" name="Name" class="form-control" placeholder="Name" value="@DataSharingService.GetSharedData("name")">
                         </div>
                         <div>
-                            <input required type="email" name="Email" class="form-control" value="@DataSharingService.GetSharedData("email")">
+                            <input required type="email" name="Email" class="form-control" placeholder="Email" value="@DataSharingService.GetSharedData("email")">
                         </div>
                         <div>
-                            <input required type="text" name="Phone" class="form-control" value="@DataSharingService.GetSharedData("phone")">
+                            <input required type="text" name="Phone" class="form-control" placeholder="Phone" value="@DataSharingService.GetSharedData("phone")">
                         </div>
                         <div>
                             <input required type="date" name="Date" class="form-control" placeholder="Date">
                         </div>
                         <div>
-                            <input required type="text" name="Time" class="form-control" id="book_time" placeholder="Time">
+                            <input required type="time" name="Time" class="form-control">
                         </div>
                         <div>
                             <input required type="number" name="NumberOfGuests" class="form-control" placeholder="NumberOfPeople">
@@ -134,5 +134,3 @@
         </div>
     </div>
 </section>
-<script></script>
-
