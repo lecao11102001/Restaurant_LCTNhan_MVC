@@ -1,0 +1,109 @@
+﻿@model Restaurant_MVC.Data.Customer;
+@using Restaurant_MVC.Models.SharedDataDictionary;
+@inject IDataSharingService DataSharingService
+@{
+    ViewData["Title"] = "Customer_Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var gender = DataSharingService.GetSharedData("gender");
+
+}
+
+<dl id="load_info" class="row" style="color:white; padding-left: 577px; padding-right: 177px;">
+    <form asp-action="Customer_Info" asp-controller="Home" method="post">
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerId)
+    </dt>
+    <dd class="col-sm-10">
+        <input asp-for="CustomerId" readonly style="width: 500px;" value="@DataSharingService.GetSharedData("customerid")" class="form-control" />
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-10">
+            @*<input type="text" style="width: 500px;" value="@name" />*@
+        <input required asp-for="Name" style="width: 500px;" value="@DataSharingService.GetSharedData("name")" class="form-control" />
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+    </dt>
+    <dd class="col-sm-10">
+            @if (gender.Equals("true"))
+            {
+            <input class="form-control" style="width: 500px;" value="Nữ" asp-for="Gender" />
+            }
+            else
+            {
+            <input class="form-control" style="width: 500px;" value="Nam" asp-for="Gender" />
+            }
+
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+    </dt>
+    <dd class="col-sm-10">
+        <input required asp-for="Address" style="width: 500px;" value="@DataSharingService.GetSharedData("address")" class="form-control" />
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+    </dt>
+    <dd class="col-sm-10">
+        <input required asp-for="Phone" style="width: 500px;" value="@DataSharingService.GetSharedData("phone")" class="form-control" />
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+    </dt>
+    <dd class="col-sm-10">
+        <input required asp-for="Email" style="width: 500px;" value="@DataSharingService.GetSharedData("email")" class="form-control" />
+
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+    </dt>
+    <dd class="col-sm-10">
+        <input required asp-for="DateOfBirth" type="text" style="width: 500px;" value="@DataSharingService.GetSharedData("dateofbirth")" class="form-control" />
+
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+    </dt>
+    <dd class="col-sm-10">
+            @*<input asp-for="UserName" disabled style="width: 500px;" value="@username" class="form-control" />*@
+        <input type="text" disabled style="width: 500px;" value="@DataSharingService.GetSharedData("username")" />
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PassWord)
+    </dt>
+    <dd class="col-sm-10">
+        <input required asp-for="PassWord" style="width: 500px;" value="@DataSharingService.GetSharedData("password")" class="form-control" />
+
+    </dd>
+    <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+    </dt>
+    <dd class="col-sm-10">
+        <input type="text" disabled style="width: 500px;" value="@DataSharingService.GetSharedData("role")" />
+    </dd>
+    <dt class="col-sm-2">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </dt>
+    </form>
+    @*<dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.ModifiedById)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.ModifiedById)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.DeleteDate)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.DeleteDate)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.DeleteById)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.DeleteById)
+    </dd>*@
+</dl>
