@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Restaurant_MVC.Data;
-using Restaurant_MVC.Models;
+using Restaurant_MVC.Interface;
+using Restaurant_MVC.Models.Entities;
 using Restaurant_MVC.Models.SharedDataDictionary;
+using Restaurant_MVC.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbDSN")));
 
+//
 builder.Services.AddSingleton<IDataSharingService, DataSharingService>();
 builder.Services.AddTransient<ISpecialties, SpecialtiesService>();
 builder.Services.AddTransient<IHome, HomeService>();
@@ -45,8 +47,37 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapAreaControllerRoute(
+        name: "Reservation",
+        areaName: "Reservation",
+        pattern: "Reservation/{controller=Reservation}/{action=Index}"
+    );
+    endpoints.MapAreaControllerRoute(
+        name: "ContactUs",
+        areaName: "ContactUs",
+        pattern: "ContactUs/{controller=ContactUs}/{action=Index}"
+    );
+    endpoints.MapAreaControllerRoute(
+        name: "Stories",
+        areaName: "Stories",
+        pattern: "Stories/{controller=Stories}/{action=Index}"
+    );
+    endpoints.MapAreaControllerRoute(
+        name: "Specialties",
+        areaName: "Specialties",
+        pattern: "Specialties/{controller=Specialties}/{action=Index}"
+    );
+    endpoints.MapControllerRoute(
+        name: "areaRoute",
+        pattern: "{area:exists}/{controller}/{action}/{id?}"
+    );
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+
+});
 
 app.Run();

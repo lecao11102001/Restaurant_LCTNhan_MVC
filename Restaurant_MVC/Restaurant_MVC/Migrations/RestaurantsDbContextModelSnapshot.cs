@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Restaurant_MVC.Data;
+using Restaurant_MVC.Models.Entities;
 
 #nullable disable
 
@@ -212,6 +212,43 @@ namespace Restaurant_MVC.Migrations
                     b.HasIndex("FoodCategoryId");
 
                     b.ToTable("FoodItem");
+                });
+
+            modelBuilder.Entity("Restaurant_MVC.Data.MenuCategory", b =>
+                {
+                    b.Property<Guid>("MenuCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeleteById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<Guid?>("ModifiedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("MenuCategoryId");
+
+                    b.ToTable("MenuCategory");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Data.Reservation", b =>

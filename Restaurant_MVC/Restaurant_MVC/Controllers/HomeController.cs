@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
-using Restaurant_MVC.Data;
-using Restaurant_MVC.Models;
 using System.Net;
 using Restaurant_MVC.Models.SharedDataDictionary;
-using Microsoft.AspNetCore.Authorization;
+using Restaurant_MVC.Models.Entities;
+using Restaurant_MVC.Interface;
+using Restaurant_MVC.Models.ViewModels;
 
 namespace Restaurant_MVC.Controllers
 {
@@ -26,20 +26,12 @@ namespace Restaurant_MVC.Controllers
 
         public IActionResult Index()
         {
-            //var menuItems = new List<string> {"About", "Specialties", "Stories", "Reservation", "ContactUs" };
+            var menuItems = new List<string> { "About", "Specialties", "Stories", "Reservation", "ContactUs" };
 
-            //var result = new ModelModel();
-            //result.listMenu = menuItems;
-            //result.ListFoodCategories = _restaurantsDbContext.FoodCategories.ToList();
-
-            var allFoodCategories = _iHome.GetAllFoodCategories();
-            var allFoodItems = _iHome.GetAllFoodItems();
-
-            var model = new ModelModel
-            {
-                ListFoodCategories = allFoodCategories,
-                ListFoodItems = allFoodItems
-            };
+            var model = new ModelModel();
+            model.ListFoodItems = _iHome.GetAllFoodItems(); 
+            model.ListFoodCategories = _iHome.GetAllFoodCategories();
+            model.listMenu = _iHome.GetAllMenu();
 
             return View(model);
         }

@@ -295,4 +295,9 @@ insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'AP
 insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'RED TEA WATER',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-6.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'OO MAI TEA',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-7.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
+insert into Restaurants Values (newid(),'LCTNhan',N'157 Nguyễn Đức Cảnh','0905669865','lecao11102001@gmail.com', N'https://www.facebook.com/L.C.T.N.XuMuMMiM','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
+insert into MenuCategory Values (NEWID(),'Specialties',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into MenuCategory Values (NEWID(),'Reservation',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into MenuCategory Values (NEWID(),'Srories',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into MenuCategory Values (NEWID(),'ContactUs',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())

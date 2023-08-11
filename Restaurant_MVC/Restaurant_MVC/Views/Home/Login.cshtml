@@ -1,6 +1,8 @@
-﻿@model Restaurant_MVC.Models.LoginModel
-@using Restaurant_MVC.Models.SharedDataDictionary;
-@inject IDataSharingService DataSharingService
+﻿@using Restaurant_MVC.Models.SharedDataDictionary;
+@inject IDataSharingService DataSharingService;
+@using Restaurant_MVC.Models.ViewModels;
+@model LoginModel
+
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
