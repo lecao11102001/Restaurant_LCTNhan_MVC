@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant_MVC.Models.Entities;
 
@@ -11,9 +12,11 @@ using Restaurant_MVC.Models.Entities;
 namespace Restaurant_MVC.Migrations
 {
     [DbContext(typeof(RestaurantsDbContext))]
-    partial class RestaurantsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230814041755_Add_Table_StoriesCategory_Lan1")]
+    partial class Add_Table_StoriesCategory_Lan1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -388,67 +391,6 @@ namespace Restaurant_MVC.Migrations
                     b.ToTable("StoriesCategory");
                 });
 
-            modelBuilder.Entity("Restaurant_MVC.Models.Entities.StoriesItem", b =>
-                {
-                    b.Property<Guid>("StoriesItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("Comments")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeleteById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("End")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LongDescription")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<Guid?>("ModifiedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("ShortDescription")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime?>("Start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("StoriesCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("Viewer")
-                        .HasColumnType("int");
-
-                    b.HasKey("StoriesItemId");
-
-                    b.HasIndex("StoriesCategoryId");
-
-                    b.ToTable("StoriesItem");
-                });
-
             modelBuilder.Entity("Restaurant_MVC.Models.Entities.ContactUs", b =>
                 {
                     b.HasOne("Restaurant_MVC.Models.Entities.Customer", "Customer")
@@ -482,17 +424,6 @@ namespace Restaurant_MVC.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Restaurant_MVC.Models.Entities.StoriesItem", b =>
-                {
-                    b.HasOne("Restaurant_MVC.Models.Entities.StoriesCategory", "StoriesCategory")
-                        .WithMany("StoriesItems")
-                        .HasForeignKey("StoriesCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("StoriesCategory");
-                });
-
             modelBuilder.Entity("Restaurant_MVC.Models.Entities.Customer", b =>
                 {
                     b.Navigation("ContactUss");
@@ -503,11 +434,6 @@ namespace Restaurant_MVC.Migrations
             modelBuilder.Entity("Restaurant_MVC.Models.Entities.FoodCategory", b =>
                 {
                     b.Navigation("FoodItems");
-                });
-
-            modelBuilder.Entity("Restaurant_MVC.Models.Entities.StoriesCategory", b =>
-                {
-                    b.Navigation("StoriesItems");
                 });
 #pragma warning restore 612, 618
         }

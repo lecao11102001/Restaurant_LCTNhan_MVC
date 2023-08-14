@@ -4,6 +4,8 @@ using Restaurant_MVC.Interface;
 using Restaurant_MVC.Models.ViewModels;
 using System.Net.Mail;
 using System.Net;
+using AutoMapper;
+using Restaurant_MVC.Service;
 
 namespace Restaurant_MVC.Areas.Reservation.Controllers
 {
@@ -11,20 +13,32 @@ namespace Restaurant_MVC.Areas.Reservation.Controllers
     public class ReservationController : Controller
     {
         private readonly IReservation _ireservation;
+        private readonly IMapper _mapper;
 
-        public ReservationController(IReservation ireservation)
+        public ReservationController(IReservation ireservation, IMapper mapper)
         {
             _ireservation = ireservation;
+            _mapper = mapper;
         }
         // GET: ReservationController1
         public ActionResult Index()
         {
+            //if (TempData.ContainsKey("SuccessReservation"))
+            //{
+            //    ViewBag.SuccessMessage = TempData["SuccessReservation"].ToString();
+            //}
             return View();
         }
 
         public async Task<IActionResult> MakeReservation(ReservationModel model)
         {
             // Thêm vào database
+            //_ireservation.AddMakeReservation(model);
+
+            // Map the Reservation object to ReservationDto using AutoMapper
+            //var reservationDto = _mapper.Map<ReservationModel>(model);
+
+            // Pass the mapped ReservationDto to the service for processing
             _ireservation.AddMakeReservation(model);
 
             // Gửi email xác nhận
@@ -40,6 +54,8 @@ namespace Restaurant_MVC.Areas.Reservation.Controllers
             smtpClient.Credentials = new NetworkCredential(fromEmail, "isyplpdlymprdygn");
 
             smtpClient.SendMailAsync(message);
+
+            //TempData["SuccessReservation"] = "Đặt bàn thành công! Hãy chờ xác nhận từ chúng tôi.";
 
             return View("Index");
 

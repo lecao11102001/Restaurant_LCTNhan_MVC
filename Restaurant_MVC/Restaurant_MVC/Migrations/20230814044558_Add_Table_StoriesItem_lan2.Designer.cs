@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurant_MVC.Models.Entities;
 
@@ -11,9 +12,11 @@ using Restaurant_MVC.Models.Entities;
 namespace Restaurant_MVC.Migrations
 {
     [DbContext(typeof(RestaurantsDbContext))]
-    partial class RestaurantsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230814044558_Add_Table_StoriesItem_lan2")]
+    partial class Add_Table_StoriesItem_lan2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -409,9 +412,6 @@ namespace Restaurant_MVC.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("End")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -432,9 +432,6 @@ namespace Restaurant_MVC.Migrations
                     b.Property<string>("ShortDescription")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime?>("Start")
-                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("StoriesCategoryId")
                         .HasColumnType("uniqueidentifier");

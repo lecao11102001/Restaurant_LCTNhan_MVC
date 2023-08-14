@@ -26,7 +26,7 @@ namespace Restaurant_MVC.Controllers
 
         public IActionResult Index()
         {
-            var menuItems = new List<string> { "About", "Specialties", "Stories", "Reservation", "ContactUs" };
+            //var menuItems = new List<string> { "About", "Specialties", "Stories", "Reservation", "ContactUs" };
 
             var model = new ModelModel();
             model.ListFoodItems = _iHome.GetAllFoodItems(); 

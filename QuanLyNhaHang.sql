@@ -301,3 +301,8 @@ insert into MenuCategory Values (NEWID(),'Specialties',null,'0001-01-01 00:00:00
 insert into MenuCategory Values (NEWID(),'Reservation',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 insert into MenuCategory Values (NEWID(),'Srories',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 insert into MenuCategory Values (NEWID(),'ContactUs',null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+
+insert into StoriesCategory values (newid(),N'Tiểu Sử','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into StoriesCategory values (newid(),N'Sự Kiện','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+
+insert into StoriesItem values (NEWID(),'cc996e0a-0849-4a4b-a25a-b06d6cc8251f','Tasty Thursdays','o1.jpg','20% off',null,null,null,null,null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())

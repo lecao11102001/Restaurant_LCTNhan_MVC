@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Restaurant_MVC.Interface;
 using Restaurant_MVC.Models.Entities;
 using Restaurant_MVC.Models.ViewModels;
@@ -8,10 +9,12 @@ namespace Restaurant_MVC.Service
     public class ContactUsService : IContactUs
     {
         private readonly RestaurantsDbContext _restaurantsDbContext;
+        private readonly IMapper _iMapp;
 
-        public ContactUsService(RestaurantsDbContext restaurantsDbContext)
+        public ContactUsService(RestaurantsDbContext restaurantsDbContext, IMapper iMapp)
         {
             _restaurantsDbContext = restaurantsDbContext;
+            _iMapp = iMapp;
         }
 
         /// <summary>
@@ -22,15 +25,15 @@ namespace Restaurant_MVC.Service
         {
             try
             {
-                var contactus = new ContactUs
-                {
-                    CustomerId = contactmodel.CustomerId,
-                    Name = contactmodel.Name,
-                    Email = contactmodel.Email,
-                    Subject = contactmodel.Subject,
-                    Message = contactmodel.Message
-                };
-
+                //var contactus = new ContactUs
+                //{
+                //    CustomerId = contactmodel.CustomerId,
+                //    Name = contactmodel.Name,
+                //    Email = contactmodel.Email,
+                //    Subject = contactmodel.Subject,
+                //    Message = contactmodel.Message
+                //};
+                var contactus = _iMapp.Map<ContactUs>(contactmodel);
                 _restaurantsDbContext.ContactUss.Add(contactus);
 
                 await _restaurantsDbContext.SaveChangesAsync();

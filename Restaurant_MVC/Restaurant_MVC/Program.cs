@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant_MVC.Interface;
 using Restaurant_MVC.Models.Entities;
+using Restaurant_MVC.Models.Mapping;
 using Restaurant_MVC.Models.SharedDataDictionary;
 using Restaurant_MVC.Service;
 
@@ -19,6 +21,10 @@ builder.Services.AddTransient<ISpecialties, SpecialtiesService>();
 builder.Services.AddTransient<IHome, HomeService>();
 builder.Services.AddTransient<IReservation, ReservationService>();
 builder.Services.AddTransient<IContactUs, ContactUsService>();
+
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //builder.Services.AddSession();
 

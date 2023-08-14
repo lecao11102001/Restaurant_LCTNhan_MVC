@@ -7,7 +7,7 @@
 @inject IDataSharingService DataSharingService;
 
 @{
-    var username = DataSharingService.GetSharedData("username");
+    var username  = DataSharingService.GetSharedData("username");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -71,22 +71,22 @@
                             </li>
                             @*@foreach (var item in Model.listMenu)
                             {
-                            <li class="nav-item">
-                            <a class="nav-link" asp-controller="@item.Name" asp-action="Index" >@item.Name</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="@item.Name" asp-controller="@item.Name" asp-action="Index">@item.Name</a>
+                                </li>
                             }*@
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Specialties" asp-controller="Specialties" asp-action="Index">Specialties</a>
+                            <a class="nav-link" asp-area="Specialties" asp-controller="Specialties" asp-action="Index">Specialties</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Reservation" asp-controller="Reservation" asp-action="Index">Reservation</a>
+                            <a class="nav-link" asp-area="Reservation" asp-controller="Reservation" asp-action="Index">Reservation</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Stories" asp-controller="Stories" asp-action="Index">Stories</a>
+                            <a class="nav-link" asp-area="Stories" asp-controller="Stories" asp-action="Index">Stories</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="ContactUs" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+                            <a class="nav-link" asp-area="ContactUs" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
                             </li>
                         </ul>
                         <div class="user_option">
@@ -125,10 +125,8 @@
                 </nav>
             </div>
         </header>
-          <!-- slider section -->
-        
+        <!-- slider section -->
         <!-- end slider section -->
-        
         <!-- end header section -->
         @RenderBody()
 
