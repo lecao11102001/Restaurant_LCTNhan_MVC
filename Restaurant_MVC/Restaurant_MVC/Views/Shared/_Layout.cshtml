@@ -3,7 +3,8 @@
 @using System.Net;
 @using Restaurant_MVC.Controllers;
 @using Restaurant_MVC.Models.ViewModels;
-@using Restaurant_MVC.Models.SharedDataDictionary;
+@model Model;
+@using Restaurant_MVC.Models.SharedData;
 @inject IDataSharingService DataSharingService;
 
 @{
@@ -53,7 +54,10 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="/">
                         <span>
-                            LCT Nhan
+                            @foreach(var item in Model.Restaurants)
+                            {
+                                @item.Name
+                            }
                         </span>
                     </a>
 
@@ -140,24 +144,27 @@
                                 Contact Us
                             </h4>
                             <div class="contact_link_box">
-                                <a href="">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <span>
-                                        Location
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>
-                                        Call +01 1234567890
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <span>
-                                        demo@gmail.com
-                                    </span>
-                                </a>
+                                @foreach(var info in Model.Restaurants)
+                                {
+                                    <a href="">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <span>
+                                            @info.Address
+                                        </span>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <span>
+                                            @info.Phone
+                                        </span>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        <span>
+                                            @info.Email
+                                        </span>
+                                    </a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -196,7 +203,7 @@
                             Everyday
                         </p>
                         <p>
-                            10.00 Am -10.00 Pm
+                            8.00 Am - 10.00 Pm
                         </p>
                     </div>
                 </div>

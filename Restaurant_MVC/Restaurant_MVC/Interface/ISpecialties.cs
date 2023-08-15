@@ -1,11 +1,13 @@
-﻿using Restaurant_MVC.Models.Entities;
-using Restaurant_MVC.Models.ViewModels;
+﻿using Restaurant_MVC.Entities;
+using Restaurant_MVC.Areas.Specialties.Models;
 
 namespace Restaurant_MVC.Interface
 {
     public interface ISpecialties
     {
-        PagedResult<FoodItem> GetPagedFoodItems(int page);
+        PagedMenu<FoodItem> GetPagedFoodItems(int page);
         List<FoodCategory> GetAllFoodCategories();
+        List<Restaurants> GetAllRestaurants();
+
     }
 }

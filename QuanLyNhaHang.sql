@@ -306,3 +306,17 @@ insert into StoriesCategory values (newid(),N'Tiểu Sử','0001-01-01 00:00:00.
 insert into StoriesCategory values (newid(),N'Sự Kiện','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
 insert into StoriesItem values (NEWID(),'cc996e0a-0849-4a4b-a25a-b06d6cc8251f','Tasty Thursdays','o1.jpg','20% off',null,null,null,null,null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into StoriesItem values (NEWID(),'cc996e0a-0849-4a4b-a25a-b06d6cc8251f','Pizza Days','o2.jpg','15% off',null,null,null,null,null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into StoriesItem values (NEWID(),'cc996e0a-0849-4a4b-a25a-b06d6cc8251f','Wine Days','o3.jpg','10% off',null,null,null,null,null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+
+insert into StoriesItem values (NEWID(),'8a560c56-8e15-47d3-a5ff-9bd24fd55ddf','Spacious and comfortable place','image_1.jpg','At times, he takes up the exercise of the trouble here, blinded by the whole of things, his or, in. Exercise, and indeed the greater times, 
+										from the architect of pleasures or duties and pains. Error, pain, pleasure, all trouble, hate, the guilt of them, unless it results in those whom he hates, as if he repulses those who fall into the rejection of duties, is not it here? 
+										You must take advantage of it, or get it.'
+								,'Whosoever may be some flight of distinction, is indeed chosen to reject the truth. I will not explain anything because it is them. Wherefore he is not bound by time, 
+										unless he be guilty of the pleasure of greater duties, or he undertakes from the pursuit of none of the truth, which, because he is ashamed of bearing them, they are free. Error, he wants to go on. They leave less, for to some this will come, 
+										but the matter is greater. He hates pleasures, it will happen or nothing with any of the pains of labor, which he wants the benefits of things to spare him indeed! Because this flight is held, does it itself or only result in pain? 
+										I will open the pleasures of flattery not great. He reproaches us with hating the inventor, because he will accept them as laborious. But the fault is found, and his fault is paid for us. Pain, indeed, especially any pain, distinction of pain and the like, 
+										for pleasure is more severe, training in reason or in a way which is just for some, pleasures are blessed by the right of no one toils. They succeed and beget the whole flight of choice, but they provide for pains. Pleasures, truth. For the blessed are never guilty of pleasures,
+										bound to refuse! Pleasures are the most worthy of pains in times of pain, but we lead some to obtain responsibilities as if no one from the insight provides the great laborious right of repudiating the right advantage is owed to flattery, otherwise pain is toil. Dolores, rightly, 
+										is to blame. They provide for the error, to be borne by passion and pain, or by reason. Do you owe these pleasures to the flexibility of those less present things, the things themselves?'
+								,10,500,null,null,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())

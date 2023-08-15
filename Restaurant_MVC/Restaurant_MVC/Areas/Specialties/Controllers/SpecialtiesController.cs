@@ -17,16 +17,15 @@ namespace Restaurant_MVC.Areas.Specialties.Controllers
         public ActionResult Index(int page = 1)
         {
             var pagedFoodItems = _iSpecialties.GetPagedFoodItems(page);
-            var allFoodCategories = _iSpecialties.GetAllFoodCategories();
 
-            var model = new ModelModel
+            var model = new Model
             {
                 ListFoodItems = pagedFoodItems.Items,
                 CurrentPage = pagedFoodItems.CurrentPage,
                 TotalPages = pagedFoodItems.TotalPages,
-                ListFoodCategories = allFoodCategories
             };
-
+            model.Restaurants = _iSpecialties.GetAllRestaurants();
+            model.ListFoodCategories = _iSpecialties.GetAllFoodCategories();
             return View(model);
         }
     }

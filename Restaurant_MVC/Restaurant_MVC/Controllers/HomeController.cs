@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using Restaurant_MVC.Models.SharedDataDictionary;
-using Restaurant_MVC.Models.Entities;
+using Restaurant_MVC.Models.SharedData;
 using Restaurant_MVC.Interface;
 using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Entities;
 
 namespace Restaurant_MVC.Controllers
 {
@@ -28,17 +28,30 @@ namespace Restaurant_MVC.Controllers
         {
             //var menuItems = new List<string> { "About", "Specialties", "Stories", "Reservation", "ContactUs" };
 
-            var model = new ModelModel();
-            model.ListFoodItems = _iHome.GetAllFoodItems(); 
+            //var pageStoriesItem = _iHome.GetPageStoriesItem(page);
+
+            var model = new Model();
+            //{
+            //    ListStoriesItem = pageStoriesItem.Items,
+            //    CurrentPage = pageStoriesItem.CurrentPage,
+            //    TotalPages = pageStoriesItem.TotalPages,
+            //};
+            model.ListFoodItems = _iHome.GetAllFoodItems();
             model.ListFoodCategories = _iHome.GetAllFoodCategories();
             model.listMenu = _iHome.GetAllMenu();
+            model.ListStoriesItem = _iHome.GetAllStoriesItems();
+            model.ListStoriesCategory = _iHome.GetAllStoriesCategory();
+            model.Restaurants = _iHome.GetAllRestaurants();
 
             return View(model);
         }
 
         public IActionResult Login()
         {
-            return View();
+            var model = new Model();
+            model.Restaurants = _iHome.GetAllRestaurants();
+
+            return View(model);
         }
 
         [HttpGet]
@@ -74,7 +87,10 @@ namespace Restaurant_MVC.Controllers
 
         public IActionResult Registry()
         {
-            return View();
+            var model = new Model();
+            model.Restaurants = _iHome.GetAllRestaurants();
+
+            return View(model);
         }
 
         //POST: Register
@@ -98,7 +114,7 @@ namespace Restaurant_MVC.Controllers
                         DateOfBirth = registry.DateOfBirth.Date,
                         UserName = registry.Username,
                         PassWord = registry.Password,
-                        Role = "Khách hàng",
+                        Role = "Customer",
                     };
                     _restaurantsDbContext.Customers.Add(cus);
                     _restaurantsDbContext.SaveChanges();
@@ -122,7 +138,10 @@ namespace Restaurant_MVC.Controllers
         [HttpGet]
         public IActionResult Customer_Info()
         {
-            return View();
+            var model = new Model();
+            model.Restaurants = _iHome.GetAllRestaurants();
+
+            return View(model);
         }
 
         [HttpPost]

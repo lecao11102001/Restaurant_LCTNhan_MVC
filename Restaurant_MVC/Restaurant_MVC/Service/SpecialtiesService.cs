@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+﻿
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.Entities;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Entities;
+using Restaurant_MVC.Areas.Specialties.Models;
 
 namespace Restaurant_MVC.Service
 {
@@ -20,7 +18,12 @@ namespace Restaurant_MVC.Service
             return _restaurantsDbContext.FoodCategories.ToList();
         }
 
-        public PagedResult<FoodItem> GetPagedFoodItems(int page = 1)
+        public List<Restaurants> GetAllRestaurants()
+        {
+            return _restaurantsDbContext.Restaurantss.ToList();
+        }
+
+        PagedMenu<FoodItem> ISpecialties.GetPagedFoodItems(int page = 1)
         {
             int pageSize = 9;
             var skip = (page - 1) * pageSize;
@@ -32,7 +35,7 @@ namespace Restaurant_MVC.Service
             // Tổng trang
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
-            var result = new PagedResult<FoodItem>
+            var result = new PagedMenu<FoodItem>
             {
                 Items = pagedItems,
                 CurrentPage = page,

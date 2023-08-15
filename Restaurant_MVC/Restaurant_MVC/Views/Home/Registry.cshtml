@@ -1,5 +1,4 @@
-﻿@model RegistryModel;
-@using Restaurant_MVC.Models.ViewModels;
+﻿@using Restaurant_MVC.Models.ViewModels;
 
 @{
     ViewData["Title"] = "Registry";
@@ -11,43 +10,34 @@
         <form asp-action="Registry" asp-controller="Home" method="post">
             @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
             <div class="form-group">
-                <label asp-for="Name" style="color: white;" class="control-label"></label>
-                <input required asp-for="Name" type="text" class="form-control" />
+                <input required name="Name" type="text" class="form-control" placeholder="Name"/>
                 @*<span asp-validation-for="Name" class="text-danger"></span>*@
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label" style="color: white;">
-                    <input class="form-check-input" asp-for="Gender" type="checkbox" />@Html.DisplayNameFor(model => model.Gender)
-                </label>
+            <div class="form-group ">
+                <input style="height: auto; width: auto" class="form-control" name="Gender" type="checkbox" />
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="Address" class="control-label"></label>
-                <input required asp-for="Address" type="text" class="form-control" />
+                <input required name="Address" type="text" class="form-control" placeholder="Address"/>
                 @*<span asp-validation-for="Address" class="text-danger"></span>*@
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="Phone" class="control-label"></label>
-                <input required asp-for="Phone" type="tel" class="form-control" />
+                <input required name="Phone" type="tel" class="form-control" placeholder="Phone"/>
                 @*<span asp-validation-for="Phone" class="text-danger"></span>*@
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="Email" class="control-label"></label>
-                <input required asp-for="Email" type="email" class="form-control" />
+                <input required name="Email" type="email" class="form-control" placeholder="Email"/>
                 @*<span asp-validation-for="Email" class="text-danger"></span>*@
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="DateOfBirth" class="control-label"></label>
-                <input required asp-for="DateOfBirth" type="text" id="book_date" name="Date" class="form-control" />
+                <input required name="DateOfBirth" type="text" id="book_date" name="Date" class="form-control" placeholder="DateOfBirth"/>
                 @*<span asp-validation-for="DateOfBirth" class="text-danger"></span>*@
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="Username" class="control-label"></label>
-                <input required asp-for="Username" type="text" class="form-control" />
+                <input required name="Username" type="text" class="form-control" placeholder="Username"/>
                 @*<span asp-validation-for="Username" class="text-danger"></span>*@
             </div>
             <div class="form-group">
-                <label style="color: white;" asp-for="Password" class="control-label"></label>
-                <input required asp-for="Password" type="password" class="form-control" />
+                <input required name="Password" type="password" class="form-control" placeholder="Password"/>
                 @*<span asp-validation-for="Password" class="text-danger"></span>*@
             </div>
             <div class="form-group">

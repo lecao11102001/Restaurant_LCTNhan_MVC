@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Net;
 using Restaurant_MVC.Interface;
 using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Areas.ContactUs.Models;
 
 namespace Restaurant_MVC.Areas.ContactUs.Controllers
 {
@@ -18,7 +19,10 @@ namespace Restaurant_MVC.Areas.ContactUs.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var model = new Model();
+
+            model.Restaurants = _iContactUs.GetAllRestaurants();
+            return View(model);
         }
 
         [HttpPost]

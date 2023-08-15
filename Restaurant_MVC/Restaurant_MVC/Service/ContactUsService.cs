@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Restaurant_MVC.Areas.ContactUs.Models;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.Entities;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Entities;
 
 namespace Restaurant_MVC.Service
 {
@@ -17,10 +17,11 @@ namespace Restaurant_MVC.Service
             _iMapp = iMapp;
         }
 
-        /// <summary>
-        /// Send message
-        /// </summary>
-        /// <param name="contactmodel"></param>
+        public List<Restaurants> GetAllRestaurants()
+        {
+            return _restaurantsDbContext.Restaurantss.ToList();
+        }
+
         public async Task<bool> SendMessage(ContactUsModel contactmodel)
         {
             try

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Restaurant_MVC.Models.Entities;
+using Restaurant_MVC.Entities;
 
 #nullable disable
 
@@ -416,8 +416,7 @@ namespace Restaurant_MVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LongDescription")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("ModifiedById")
                         .HasColumnType("uniqueidentifier");
@@ -430,8 +429,7 @@ namespace Restaurant_MVC.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("ShortDescription")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Start")
                         .HasColumnType("datetime2");

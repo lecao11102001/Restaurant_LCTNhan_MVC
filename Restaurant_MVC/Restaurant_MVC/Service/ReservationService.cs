@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Restaurant_MVC.Areas.Reservation.Models;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.Entities;
-using Restaurant_MVC.Models.SharedDataDictionary;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Entities;
+using Restaurant_MVC.Models.SharedData;
 
 namespace Restaurant_MVC.Service
 {
@@ -34,6 +34,11 @@ namespace Restaurant_MVC.Service
 
             _dbContext.Reservations.Add(reservations);
             _dbContext.SaveChanges();
+        }
+
+        public List<Restaurants> GetAllRestaurants()
+        {
+            return _dbContext.Restaurantss.ToList();
         }
     }
 }
