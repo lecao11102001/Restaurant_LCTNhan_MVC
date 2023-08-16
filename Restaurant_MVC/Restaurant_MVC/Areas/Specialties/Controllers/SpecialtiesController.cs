@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Areas.Specialties.Controllers
 {
@@ -16,14 +16,14 @@ namespace Restaurant_MVC.Areas.Specialties.Controllers
         // GET: Specialties
         public ActionResult Index(int page = 1)
         {
-            var pagedFoodItems = _iSpecialties.GetPagedFoodItems(page);
+            var pagedFoodItems = _iSpecialties.GetPageFoodItems(page);
 
-            var model = new Model
-            {
-                ListFoodItems = pagedFoodItems.Items,
-                CurrentPage = pagedFoodItems.CurrentPage,
-                TotalPages = pagedFoodItems.TotalPages,
-            };
+            var model = new Model();
+
+            model.ListFoodItems = pagedFoodItems.Items;
+            model.CurrentPage = pagedFoodItems.CurrentPage;
+            model.TotalPages = pagedFoodItems.TotalPages;
+            
             model.Restaurants = _iSpecialties.GetAllRestaurants();
             model.ListFoodCategories = _iSpecialties.GetAllFoodCategories();
             return View(model);

@@ -1,5 +1,5 @@
 ﻿using Restaurant_MVC.Entities;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Interface
 {
@@ -9,9 +9,7 @@ namespace Restaurant_MVC.Interface
         List<FoodItem> GetAllFoodItems();
         List<Restaurants> GetAllRestaurants();
         List<MenuCategory> GetAllMenu();
-        List<StoriesItem> GetAllStoriesItems();
-        List<StoriesCategory> GetAllStoriesCategory();
-        //PagedStoriesItem<StoriesItem> GetPageStoriesItem(int page);
-        
+        Page<Events> GetPageStoriesItem(int page);
+
     }
 }

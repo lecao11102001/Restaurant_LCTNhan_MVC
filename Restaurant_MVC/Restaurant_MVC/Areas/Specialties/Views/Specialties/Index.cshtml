@@ -1,8 +1,7 @@
-﻿@*@model ModelModel;*@
-@using System.Linq;
+﻿@using System.Linq;
 @using Microsoft.EntityFrameworkCore;
-@using Restaurant_MVC.Models.ViewModels;
 @using Restaurant_MVC.Service;
+@using Restaurant_MVC.Common;
 
 @{
     ViewData["Title"] = "Index";
@@ -142,10 +141,10 @@
                 }         
             </div>  
         </div>
-        <div id="pagination">
+        <div style="text-align: center;">
             @for (int i = 1; i <= Model.TotalPages; i++)
             {
-                <a href="@Url.Action("Index", new { page = i })">@i</a>
+                <a style=" border: 1px solid black; border-radius: 10px; padding-right: 10px; padding-left: 10px;" href="@Url.Action("Index", new { page = i })">@i</a>
             }
         </div>
     </div>

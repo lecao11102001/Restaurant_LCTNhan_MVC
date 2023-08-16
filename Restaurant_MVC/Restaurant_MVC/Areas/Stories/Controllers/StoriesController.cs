@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
+using System.Drawing.Printing;
+using System.Net.WebSockets;
 
 namespace Restaurant_MVC.Areas.Stories.Controllers
 {
@@ -17,10 +17,16 @@ namespace Restaurant_MVC.Areas.Stories.Controllers
         }
 
         // GET: StoriesController1
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
+            var pageStories = _iStories.GetPageStoriesItems(page);
+
             var model = new Model();
             model.Restaurants = _iStories.GetAllRestaurants();
+
+            model.ListNews = pageStories.Items;
+            model.CurrentPage = pageStories.CurrentPage;
+            model.TotalPages = pageStories.TotalPages;
 
             return View(model);
         }

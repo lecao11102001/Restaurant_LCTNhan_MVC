@@ -1,7 +1,7 @@
 ﻿
 using Restaurant_MVC.Interface;
 using Restaurant_MVC.Entities;
-using Restaurant_MVC.Areas.Specialties.Models;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Service
 {
@@ -23,7 +23,7 @@ namespace Restaurant_MVC.Service
             return _restaurantsDbContext.Restaurantss.ToList();
         }
 
-        PagedMenu<FoodItem> ISpecialties.GetPagedFoodItems(int page = 1)
+        Page<FoodItem> ISpecialties.GetPageFoodItems(int page = 1)
         {
             int pageSize = 9;
             var skip = (page - 1) * pageSize;
@@ -35,7 +35,7 @@ namespace Restaurant_MVC.Service
             // Tổng trang
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
-            var result = new PagedMenu<FoodItem>
+            var result = new Page<FoodItem>
             {
                 Items = pagedItems,
                 CurrentPage = page,

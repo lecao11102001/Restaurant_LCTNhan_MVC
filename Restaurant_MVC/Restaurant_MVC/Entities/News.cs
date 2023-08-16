@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Restaurant_MVC.Entities
 {
-    [Table("StoriesItem")]
-    public class StoriesItem : BaseEntities
+    [Table("News")]
+    public class News : BaseEntities
     {
         [Key]
-        public Guid StoriesItemId { get; set; }
-
-        public Guid StoriesCategoryId { get; set; }
+        public Guid NewId { get; set; }
 
         [MaxLength(255)]
-        public string? Name { get; set; }
+        public string? Title { get; set; }
 
         [MaxLength]
         public string? Image { get; set; }
@@ -27,12 +25,5 @@ namespace Restaurant_MVC.Entities
         public int? Viewer { get; set; }
 
         public int? Comments { get; set; }
-
-        public DateTime? Start { get; set; }
-
-        public DateTime? End { get; set; }
-        
-        [ForeignKey("StoriesCategoryId")]    
-        public virtual StoriesCategory StoriesCategory { get; set; }
     }
 }

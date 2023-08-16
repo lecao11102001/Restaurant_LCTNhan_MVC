@@ -5,8 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using Restaurant_MVC.Models.SharedData;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 using Restaurant_MVC.Entities;
+using Restaurant_MVC.Models.ViewModels;
 
 namespace Restaurant_MVC.Controllers
 {
@@ -24,23 +25,20 @@ namespace Restaurant_MVC.Controllers
             _iHome = iHome;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            //var menuItems = new List<string> { "About", "Specialties", "Stories", "Reservation", "ContactUs" };
-
-            //var pageStoriesItem = _iHome.GetPageStoriesItem(page);
+            var pageStoriesItem = _iHome.GetPageStoriesItem(page);
 
             var model = new Model();
-            //{
-            //    ListStoriesItem = pageStoriesItem.Items,
-            //    CurrentPage = pageStoriesItem.CurrentPage,
-            //    TotalPages = pageStoriesItem.TotalPages,
-            //};
+
+            model.ListEvents = pageStoriesItem.Items;
+            model.CurrentPage = pageStoriesItem.CurrentPage;
+            model.TotalPages = pageStoriesItem.TotalPages;
+
             model.ListFoodItems = _iHome.GetAllFoodItems();
             model.ListFoodCategories = _iHome.GetAllFoodCategories();
             model.listMenu = _iHome.GetAllMenu();
-            model.ListStoriesItem = _iHome.GetAllStoriesItems();
-            model.ListStoriesCategory = _iHome.GetAllStoriesCategory();
+
             model.Restaurants = _iHome.GetAllRestaurants();
 
             return View(model);

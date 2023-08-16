@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Net;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 using Restaurant_MVC.Areas.ContactUs.Models;
 
 namespace Restaurant_MVC.Areas.ContactUs.Controllers

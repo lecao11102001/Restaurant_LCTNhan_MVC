@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Restaurant_MVC.Interface;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 using System.Net.Mail;
 using System.Net;
-using AutoMapper;
-using Restaurant_MVC.Service;
 using Restaurant_MVC.Areas.Reservation.Models;
 
 namespace Restaurant_MVC.Areas.Reservation.Controllers

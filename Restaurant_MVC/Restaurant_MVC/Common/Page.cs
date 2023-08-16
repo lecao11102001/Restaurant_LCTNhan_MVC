@@ -1,6 +1,6 @@
-﻿namespace Restaurant_MVC.Areas.Specialties.Models
+﻿namespace Restaurant_MVC.Common
 {
-    public class PagedMenu<T>
+    public class Page<T>
     {
         public List<T> Items { get; set; }
         public int CurrentPage { get; set; }

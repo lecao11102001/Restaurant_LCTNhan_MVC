@@ -1,4 +1,6 @@
-﻿
+﻿@using Restaurant_MVC.Common;
+@model Model
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -83,5 +85,56 @@
 </section>
 <!-- end slider section -->
     </div>
-<h1 style="color: red;">Lê Cao</h1>
 
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="filters-content">
+            <div>
+                @* <select>
+                @foreach (var item in Model.ListStoriesCategory)
+                {
+                <option value="@item.StoriesCategoryId">@item.Name</option>
+                }
+                </select> *@
+            </div>
+
+            <div class="row grid">
+                @foreach (var item in Model.ListNews)
+                {
+                    <div class="col-sm-6 col-lg-4 all">
+                        <div class="box">
+                            <div>
+                                <div class="img-box">
+                                    <img src="/images/@item.Image" alt="">
+                                </div>
+                                <div class="detail-box">
+                                    <div>@(item.CreatedDate != null ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : "")</div>
+                                    <h5>
+                                        @item.Title
+                                    </h5>
+                                    <div style="display: flex;">
+                                        <div>
+                                            <p><img src="/images/viewer.png" style="width: 25px; height: 25px;"> @item.Viewer</p>
+                                            <p><img src="/images/comment.png" style="width: 25px; height: 25px;"> @item.Comments</p>
+                                        </div>
+                                        <div style=" padding-top: 23px; padding-left: 153px;">
+                                            <a href="#" style="border: solid; padding: 5px; color: white;">Read More</a>
+                                        </div>
+                                        @* onclick="incrementViewCount(@item.Id)" href="@item.Url()"*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="text-align: center;">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <a style=" border: 1px solid black; border-radius: 10px; padding-right: 10px; padding-left: 10px;" href="@Url.Action("Index", new { page = i })">@i</a>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>

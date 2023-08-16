@@ -1,6 +1,6 @@
 ﻿using Restaurant_MVC.Interface;
 using Restaurant_MVC.Entities;
-using Restaurant_MVC.Models.ViewModels;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Service
 {
@@ -33,37 +33,28 @@ namespace Restaurant_MVC.Service
             return _restaurantsDbContext.Menus.ToList();
         }
 
-        public List<StoriesItem> GetAllStoriesItems()
+        public Page<Events> GetPageStoriesItem(int page = 1)
         {
-            return _restaurantsDbContext.StoriesItems.ToList();
+            int pageSize = 2;
+            var skip = (page - 1) * pageSize;
+
+            // Item
+            var pagedItems = _restaurantsDbContext.Eventss.Skip(skip).Take(pageSize).ToList();
+
+            // Tổng items
+            var totalItems = _restaurantsDbContext.Eventss.Count();
+
+            // Tổng trang
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            var result = new Page<Events>
+            {
+                Items = pagedItems,
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
+
+            return result;
         }
-        
-        public List<StoriesCategory> GetAllStoriesCategory()
-        {
-            return _restaurantsDbContext.StoriesCategories.ToList();
-        }
-
-        //public PagedStoriesItem<StoriesItem> GetPageStoriesItem(int page =1)
-        //{
-        //    int pageSize = 2;
-        //    var skip = (page - 1) * pageSize;
-
-        //    // Item
-        //    var pagedItems = _restaurantsDbContext.StoriesItems.Skip(skip).Take(pageSize).ToList();
-
-        //    // Tổng items
-        //    var totalItems = _restaurantsDbContext.StoriesItems.Count();
-        //    // Tổng trang
-        //    var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-
-        //    var result = new PagedStoriesItem<StoriesItem>
-        //    {
-        //        Items = pagedItems,
-        //        CurrentPage = page,
-        //        TotalPages = totalPages
-        //    };
-
-        //    return result;
-        //}
     }
 }

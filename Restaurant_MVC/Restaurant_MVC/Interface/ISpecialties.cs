@@ -1,11 +1,11 @@
 ﻿using Restaurant_MVC.Entities;
-using Restaurant_MVC.Areas.Specialties.Models;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Interface
 {
     public interface ISpecialties
     {
-        PagedMenu<FoodItem> GetPagedFoodItems(int page);
+        Page<FoodItem> GetPageFoodItems(int page);
         List<FoodCategory> GetAllFoodCategories();
         List<Restaurants> GetAllRestaurants();
 
