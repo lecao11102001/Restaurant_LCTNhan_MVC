@@ -77,6 +77,8 @@ namespace Restaurant_MVC.Controllers
                 _dataSharingService.SetSharedData("dateofbirth", data.FirstOrDefault().DateOfBirth.ToString());
                 _dataSharingService.SetSharedData("role", data.FirstOrDefault().Role);
 
+                if(_dataSharingService.GetSharedData("role") == "Admin")
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
                 return RedirectToAction("Index");
             }
             _dataSharingService.SetSharedData("noti_err", "username or password incorrect");
