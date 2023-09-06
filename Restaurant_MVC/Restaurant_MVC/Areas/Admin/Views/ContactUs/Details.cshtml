@@ -1,0 +1,40 @@
+﻿@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ContactUs</h4>
+    <hr />
+    <dl class="row">
+        <div class="col-md-4">
+            @foreach (var item in Model.GetAllContactUss)
+            {
+                <form>
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <input name="Name" value="@item.Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Subject</label>
+                        <input name="Subject" value="@item.Subject" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Message</label>
+                        <textarea stype="width: 320px;height: 260px;" name="Message" class="form-control">@item.Message</textarea>
+                    </div>
+                </form>
+            }
+        </div>
+    </dl>
+</div>
+<div>
+    @* @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) | *@
+    <a asp-action="Index">Back to List</a>
+</div>

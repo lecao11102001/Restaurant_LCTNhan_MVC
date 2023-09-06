@@ -1,6 +1,7 @@
 ﻿@using Restaurant_MVC.Models.SharedData;
 @using Restaurant_MVC.Entities;
 @inject IDataSharingService DataSharingService
+@model Restaurant_MVC.Common.Model
 
 @{
     ViewData["Title"] = "Customer_Info";
@@ -11,63 +12,67 @@
 }
 
 <dl id="load_info" class="row" style="color:white; padding-left: 577px; padding-right: 177px;">
-    <form asp-action="Customer_Info" asp-controller="Home" method="post">
-    <dd class="col-sm-10">
-        <input name="CustomerId" readonly style="width: 500px;" value="@DataSharingService.GetSharedData("customerid")" class="form-control" />
-    </dd>
+    @foreach (var item in Model.GetAllCustomers)
+    {
+        <form asp-action="Customer_Info" asp-controller="Home" method="post">
+        <dd class="col-sm-10">
+            <input name="CustomerId" readonly style="width: 500px;" value="@item.CustomerId" class="form-control" />
+        </dd>
 
-    <dd class="col-sm-10">
-            @*<input type="text" style="width: 500px;" value="@name" />*@
-        <input required name="Name" style="width: 500px;" value="@DataSharingService.GetSharedData("name")" class="form-control" />
-    </dd>
-    
-    <dd class="col-sm-10">
-            @if (gender.Equals("true"))
-            {
-            <input class="form-control" style="width: 500px;" value="Nữ" name="Gender" />
-            }
-            else
-            {
-            <input class="form-control" style="width: 500px;" value="Nam" name="Gender" />
-            }
+        <dd class="col-sm-10">
+                @*<input type="text" style="width: 500px;" value="@name" />*@
+            <input required name="Name" style="width: 500px;" value="@item.Name" class="form-control" />
+        </dd>
 
-    </dd>
-    
-    <dd class="col-sm-10">
-        <input required name="Address" style="width: 500px;" value="@DataSharingService.GetSharedData("address")" class="form-control" />
-    </dd>
-    
-    <dd class="col-sm-10">
-        <input required name="Phone" style="width: 500px;" value="@DataSharingService.GetSharedData("phone")" class="form-control" />
-    </dd>
-    
-    <dd class="col-sm-10">
-        <input required name="Email" style="width: 500px;" value="@DataSharingService.GetSharedData("email")" class="form-control" />
+        <dd class="col-sm-10">
+                @if (gender.Equals("true"))
+                {
+                <input class="form-control" style="width: 500px;" value="Nữ" name="Gender" />
+                }
+                else
+                {
+                <input class="form-control" style="width: 500px;" value="Nam" name="Gender" />
+                }
 
-    </dd>
-    
-    <dd class="col-sm-10">
-        <input required name="DateOfBirth" type="text" style="width: 500px;" value="@DataSharingService.GetSharedData("dateofbirth")" class="form-control" />
+        </dd>
 
-    </dd>
-    
-    <dd class="col-sm-10">
-            @*<input asp-for="UserName" disabled style="width: 500px;" value="@username" class="form-control" />*@
-        <input type="text" disabled style="width: 500px;" value="@DataSharingService.GetSharedData("username")" />
-    </dd>
-    
-    <dd class="col-sm-10">
-        <input required name="PassWord" style="width: 500px;" value="@DataSharingService.GetSharedData("password")" class="form-control" />
+        <dd class="col-sm-10">
+            <input required name="Address" style="width: 500px;" value="@item.Address" class="form-control" />
+        </dd>
 
-    </dd>
+        <dd class="col-sm-10">
+            <input required name="Phone" style="width: 500px;" value="@item.Phone" class="form-control" />
+        </dd>
 
-    <dd class="col-sm-10">
-        <input type="text" disabled style="width: 500px;" value="@DataSharingService.GetSharedData("role")" />
-    </dd>
-    <dt class="col-sm-2">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </dt>
-    </form>
+        <dd class="col-sm-10">
+            <input required name="Email" style="width: 500px;" value="@item.Email" class="form-control" />
+
+        </dd>
+
+        <dd class="col-sm-10">
+            <input required name="DateOfBirth" type="text" style="width: 500px;" value="@item.DateOfBirth" class="form-control" />
+
+        </dd>
+
+        <dd class="col-sm-10">
+                @*<input asp-for="UserName" disabled style="width: 500px;" value="@username" class="form-control" />*@
+            <input type="text" disabled style="width: 500px;" value="@item.UserName" />
+        </dd>
+
+        <dd class="col-sm-10">
+            <input required name="PassWord" style="width: 500px;" value="@item.PassWord" class="form-control" />
+
+        </dd>
+
+        <dd class="col-sm-10">
+            <input type="text" disabled style="width: 500px;" value="@item.Role" />
+        </dd>
+        <dt class="col-sm-2">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </dt>
+        </form>
+    }
+
     @*<dt class = "col-sm-2">
     @Html.DisplayNameFor(model => model.ModifiedById)
     </dt>

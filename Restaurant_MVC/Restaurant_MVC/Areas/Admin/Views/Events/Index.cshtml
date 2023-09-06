@@ -1,0 +1,80 @@
+﻿@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Events</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+@* <form asp-action="Index" asp-controller="Specialties">
+    <p>
+        Tìm tên sản phẩm: @Html.TextBox("SearchString", Model.CurrentFilter as String)
+        <input type="submit" , value="Tìm kiếm" />
+    </p>
+</form> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                DiscountAmount
+            </th>
+            <th>
+                StartDate
+            </th>
+            <th>
+                EndDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListEvent)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Code
+                </td>
+                <td>
+                    @item.DiscountAmount
+                </td>
+                <td>
+                    @item.StartDate?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.EndDate?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
+                    @* @Html.ActionLink("Details", "Details", new { id=item.EventId }) | *@
+                    @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
+                </td>
+            </tr>
+        }        
+    </tbody>
+</table>
+
+
+
+<!-- Hiển thị phân trang -->
+<div class="pagination-container">
+    @Html.PagedListPager(Model.ListEvent, page => Url.Action("Index", new {page, currentFilter = Model.CurrentFilter}))
+</div>

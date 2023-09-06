@@ -1,0 +1,53 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@inject IDataSharingService DataSharingService;
+@using Restaurant_MVC.Models.SharedData;
+@model Restaurant_MVC.Common.Model;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var customerId = DataSharingService.GetSharedData("customerId");
+
+}
+<h1>Edit</h1>
+
+<h4>FoodCategory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var item in Model.ListFoodCategories)
+        {
+            <form asp-action="Edit">
+                <div class="form-group">
+                    <input style="display: none" name="CategoryId" value="@item.FoodCategoryId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input name="Name" value="@item.Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display: none" name="CreatedDate" value="@item.CreatedDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display: none" name="CreatedById" value="@item.CreatedById" />
+                </div>
+                <div class="form-group">
+                    <input style="display: none" name="ModifiedDate" value="@DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display: none" name="ModifiedById" value="@customerId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

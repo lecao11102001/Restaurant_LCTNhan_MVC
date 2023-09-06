@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Entities
 {
@@ -11,16 +12,19 @@ namespace Restaurant_MVC.Entities
         public Guid EventId { get; set; }
 
         [MaxLength(255)]
-        public string? Title { get; set; }
+        public string? Name { get; set; }
 
         [MaxLength]
-        public string? Image { get; set; }
+        public string? Code { get; set; }
 
-        [MaxLength (255)]
-        public string? Description { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? DiscountAmount { get; set; }
 
-        public DateTime? Start { get; set; }
+        public DateTime? StartDate { get; set; }
 
-        public DateTime? End { get; set; }
+        public DateTime? EndDate { get; set; }
+
+        public ICollection<FoodItemEvent> FoodItemEvents { get; set; }
     }
 }
+

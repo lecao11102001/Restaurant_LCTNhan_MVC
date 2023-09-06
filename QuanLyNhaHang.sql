@@ -287,13 +287,13 @@ insert into FoodItem Values (NEWID(),'7de64136-69dc-47db-9842-728bc29a5bda',N'DR
 insert into FoodItem Values (NEWID(),'7de64136-69dc-47db-9842-728bc29a5bda',N'WINE 6FT6',50000,N'Meat, Potatoes, Rice, Tomatoe','wine-7.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 insert into FoodItem Values (NEWID(),'7de64136-69dc-47db-9842-728bc29a5bda',N'GRAHAM S WINE',50000,N'Meat, Potatoes, Rice, Tomatoe','wine-8.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'STRAWBERRY LEMONADE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-1.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'LEMONADE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-2.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'ORANGE JUICE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-3.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'COCA-COLA',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-4.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'APPLE JUICE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-5.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'RED TEA WATER',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-6.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
-insert into FoodItem Values (NEWID(),'ffea725a-0b0d-4855-9e93-2a78a2bdb5c4',N'OO MAI TEA',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-7.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'STRAWBERRY LEMONADE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-1.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'LEMONADE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-2.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'ORANGE JUICE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-3.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'COCA-COLA',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-4.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'APPLE JUICE',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-5.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'RED TEA WATER',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-6.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+insert into FoodItem Values (NEWID(),'27c15a53-e2ac-4d4a-7695-08dba4864899',N'OO MAI TEA',50000,N'Meat, Potatoes, Rice, Tomatoe','drink-7.jpg','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
 insert into Restaurants Values (newid(),'LCTNhan',N'157 Nguyễn Đức Cảnh','0905669865','lecao11102001@gmail.com', N'https://www.facebook.com/L.C.T.N.XuMuMMiM','0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
 
@@ -317,3 +317,11 @@ insert into News values (NEWID(),'Spacious and comfortable place','image_1.jpg',
 										bound to refuse! Pleasures are the most worthy of pains in times of pain, but we lead some to obtain responsibilities as if no one from the insight provides the great laborious right of repudiating the right advantage is owed to flattery, otherwise pain is toil. Dolores, rightly, 
 										is to blame. They provide for the error, to be borne by passion and pain, or by reason. Do you owe these pleasures to the flexibility of those less present things, the things themselves?'
 								,10,500,'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID(),'0001-01-01 00:00:00.0000000',NEWID())
+
+insert into FoodItemEvents values(NEWID(),'3d052363-7505-4350-afcc-04256fdc53df','16550233-3ab2-48b3-a94c-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'6f629116-448a-4005-8d9e-0494450aa984','1f6aeb4d-5784-4028-a94d-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'3d052363-7505-4350-afcc-04256fdc53df','1f6aeb4d-5784-4028-a94d-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'505d2ff5-a8fe-49ee-8b4f-0565d83e7d94','16550233-3ab2-48b3-a94c-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'4b72e285-5ba7-495b-bdf3-12cbb74d042b','1f6aeb4d-5784-4028-a94d-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'2fb3971e-b948-42b0-bad9-169c748d3d11','1f6aeb4d-5784-4028-a94d-08dba870d5fe')
+insert into FoodItemEvents values(NEWID(),'324eb6b2-a34d-43f2-a446-1ce1b9279c13','4640b004-63bd-428c-ba22-08dba93224a9')

@@ -1,0 +1,69 @@
+﻿@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@inject IDataSharingService DataSharingService;
+@using Restaurant_MVC.Models.SharedData;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var customerId = DataSharingService.GetSharedData("customerId");
+}
+
+<h1>Edit</h1>
+
+<h4>Events</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var item in Model.ListEvents)
+        {
+            <form asp-action="Edit">
+                <div class="form-group">
+                    <input style="display: none;" name="EventId" value="@item.EventId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input name="Name" value="@item.Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Code</label>
+                    <input name="Code" value="@item.Code" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">DiscountAmount</label>
+                    <input name="DiscountAmount" value="@item.DiscountAmount" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">StartDate</label>
+                    <input name="StartDate" value="@item.StartDate?.ToString("MM/dd/yyyy")" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">EndDate</label>
+                    <input name="EndDate" value="@item.EndDate?.ToString("MM/dd/yyyy")" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display: none;" name="CreatedDate" value="@item.CreatedDate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display:none;" name="CreatedById" value="@item.CreatedById" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display:none;" name="ModifiedDate" value="@DateTime.Now.ToString("dd/MM/yyyy")" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input style="display:none;" name="ModifiedById" value="@customerId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

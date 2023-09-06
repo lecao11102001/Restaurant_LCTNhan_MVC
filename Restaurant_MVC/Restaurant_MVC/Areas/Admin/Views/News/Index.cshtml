@@ -1,0 +1,87 @@
+﻿@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>News</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<form asp-action="Index" asp-controller="News">
+    <p>
+        Tìm tên sản phẩm: @Html.TextBox("SearchString", Model.CurrentFilter as String)
+        <input type="submit" , value="Tìm kiếm" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Viewer
+            </th>
+            <th>
+                Comments
+            </th>
+            <th>
+                CreateDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = (Model.CurrentPage - 1) * Model.PageSize + 1;
+        }
+        @foreach (var item in Model.ListNew)
+        {
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Image
+                </td>
+                <td>
+                    @item.Viewer
+                </td>
+                <td>
+                    @item.Comments
+                </td>
+                <td>
+                    @item.CreatedDate?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @* @Html.ActionLink("Edit", "Edit", new { id=item.NewId }) | *@
+                    @Html.ActionLink("Delete", "Delete", new { id=item.NewId })
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+
+<!-- Hiển thị phân trang -->
+<div class="pagination-container">
+    @Html.PagedListPager(Model.ListNew, page => Url.Action("Index", new {page, currentFilter = Model.CurrentFilter}))
+</div>

@@ -1,0 +1,64 @@
+﻿@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ContactUS</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<form asp-action="Index" >
+    <p>
+        Tìm tên sản phẩm: @Html.TextBox("SearchString", Model.CurrentFilter as String)
+        <input type="submit" , value="Tìm kiếm" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                CreatedDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GetAllContactUs)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.CreatedDate?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @* @Html.ActionLink("Edit", "Edit", new { id=item.ContactUsId }) | *@
+                    @Html.ActionLink("Details", "Details", new { id=item.ContactUsId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ContactUsId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Hiển thị phân trang -->
+<div class="pagination-container">
+    @Html.PagedListPager(Model.GetAllContactUs, page => Url.Action("Index", new {page, currentFilter = Model.CurrentFilter}))
+</div>

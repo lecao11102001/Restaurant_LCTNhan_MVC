@@ -18,8 +18,7 @@ namespace Restaurant_MVC.Entities
         public DbSet<MenuCategory>? Menus { get; set; }
         public DbSet<News>? Newss { get; set; }
         public DbSet<Events>? Eventss { get; set; }
-        //public DbSet<StoriesCategory>? StoriesCategories { get; set; }
-        //public DbSet<StoriesItem>? StoriesItems { get; set; }
+        public DbSet<FoodItemEvent>? FoodItemEvents { get; set; }
 
         #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -140,6 +140,9 @@ namespace Restaurant_MVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
@@ -152,15 +155,11 @@ namespace Restaurant_MVC.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<decimal?>("DiscountAmount")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("End")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("ModifiedById")
                         .HasColumnType("uniqueidentifier");
@@ -168,12 +167,12 @@ namespace Restaurant_MVC.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("Start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("Name")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("EventId");
 
@@ -182,7 +181,7 @@ namespace Restaurant_MVC.Migrations
 
             modelBuilder.Entity("Restaurant_MVC.Entities.FoodCategory", b =>
                 {
-                    b.Property<Guid?>("FoodCategoryId")
+                    b.Property<Guid>("FoodCategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -251,13 +250,34 @@ namespace Restaurant_MVC.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,0)");
 
                     b.HasKey("FoodItemId");
 
                     b.HasIndex("FoodCategoryId");
 
                     b.ToTable("FoodItem");
+                });
+
+            modelBuilder.Entity("Restaurant_MVC.Entities.FoodItemEvent", b =>
+                {
+                    b.Property<Guid>("FoodItemEventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FoodItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("FoodItemEventId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("FoodItemId");
+
+                    b.ToTable("FoodItemEvents");
                 });
 
             modelBuilder.Entity("Restaurant_MVC.Entities.MenuCategory", b =>
@@ -373,6 +393,9 @@ namespace Restaurant_MVC.Migrations
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
 
+                    b.Property<bool?>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<Guid?>("ModifiedById")
                         .HasColumnType("uniqueidentifier");
 
@@ -389,6 +412,9 @@ namespace Restaurant_MVC.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Time")
                         .HasColumnType("datetime2");
@@ -471,6 +497,25 @@ namespace Restaurant_MVC.Migrations
                     b.Navigation("FoodCategory");
                 });
 
+            modelBuilder.Entity("Restaurant_MVC.Entities.FoodItemEvent", b =>
+                {
+                    b.HasOne("Restaurant_MVC.Entities.Events", "Event")
+                        .WithMany("FoodItemEvents")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Restaurant_MVC.Entities.FoodItem", "FoodItem")
+                        .WithMany("FoodItemEvents")
+                        .HasForeignKey("FoodItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("FoodItem");
+                });
+
             modelBuilder.Entity("Restaurant_MVC.Entities.Reservation", b =>
                 {
                     b.HasOne("Restaurant_MVC.Entities.Customer", "Customer")
@@ -489,9 +534,19 @@ namespace Restaurant_MVC.Migrations
                     b.Navigation("Reservations");
                 });
 
+            modelBuilder.Entity("Restaurant_MVC.Entities.Events", b =>
+                {
+                    b.Navigation("FoodItemEvents");
+                });
+
             modelBuilder.Entity("Restaurant_MVC.Entities.FoodCategory", b =>
                 {
                     b.Navigation("FoodItems");
+                });
+
+            modelBuilder.Entity("Restaurant_MVC.Entities.FoodItem", b =>
+                {
+                    b.Navigation("FoodItemEvents");
                 });
 #pragma warning restore 612, 618
         }

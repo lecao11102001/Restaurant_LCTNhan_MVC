@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Entities
 {
@@ -7,7 +8,7 @@ namespace Restaurant_MVC.Entities
     public class FoodCategory : BaseEntities
     {
         [Key]
-        public Guid? FoodCategoryId { get; set; }
+        public Guid FoodCategoryId { get; set; }
 
         [MaxLength(255)]
         public string? Name { get; set; }

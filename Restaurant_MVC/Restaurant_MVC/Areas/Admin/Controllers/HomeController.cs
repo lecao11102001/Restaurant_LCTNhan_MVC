@@ -11,7 +11,5 @@ namespace Restaurant_MVC.Areas.Admin.Controllers
         {
             return View();
         }
-
-        
     }
 }

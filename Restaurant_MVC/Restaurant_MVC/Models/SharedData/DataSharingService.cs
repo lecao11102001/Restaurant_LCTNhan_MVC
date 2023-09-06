@@ -13,11 +13,6 @@
             return null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="data"></param>
         public void SetSharedData(string key, string data)
         {
             _sharedDataDict[key] = data;

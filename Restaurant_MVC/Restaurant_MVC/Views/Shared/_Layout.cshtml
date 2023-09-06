@@ -2,10 +2,9 @@
 @using Microsoft.AspNetCore.Mvc;
 @using System.Net;
 @using Restaurant_MVC.Controllers;
-@model Model;
-@using Restaurant_MVC.Models.SharedData;
 @using Restaurant_MVC.Common;
 @inject IDataSharingService DataSharingService;
+@using Restaurant_MVC.Models.SharedData;
 
 @{
     var username  = DataSharingService.GetSharedData("username");
@@ -42,6 +41,8 @@
     <link href="/css/responsive.css" rel="stylesheet" />
     <link href="/css/bootstrap-datepicker.css" rel="stylesheet" />
     <link href="/css/jquery.timepicker.css" rel="stylesheet" />
+
+    <link href="/css/Page.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="hero_area">

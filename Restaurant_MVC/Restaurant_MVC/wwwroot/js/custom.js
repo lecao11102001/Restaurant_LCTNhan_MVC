@@ -9,28 +9,28 @@ getYear();
 
 
 // isotope js
-$(window).on('load', function () {
+//$(window).on('load', function () {
 
-    var $grid = $(".grid").isotope({
-        itemSelector: ".all",
-        percentPosition: false,
-        masonry: {
-            columnWidth: ".all"
-        }
-    })
+//    var $grid = $(".grid").isotope({
+//        itemSelector: ".all",
+//        percentPosition: false,
+//        masonry: {
+//            columnWidth: ".all"
+//        }
+//    })
 
-    $('.filters_menu li').click(function () {
+//    $('.filters_menu li').click(function () {
 
-        $('.filters_menu li').removeClass('active');
-        $(this).addClass('active');
+//        $('.filters_menu li').removeClass('active');
+//        $(this).addClass('active');
 
-        var data = $(this).attr('data-filter');
-        $grid.isotope({
-            filter: data
-        })
-    });
+//        var data = $(this).attr('data-filter');
+//        $grid.isotope({
+//            filter: data
+//        })
+//    });
 
-});
+//});
 
 // nice select
 $(document).ready(function () {
@@ -78,6 +78,8 @@ function toggleUserPopup() {
     userPopup.classList.toggle('show-popup');
 }
 
+
+
 $('#book_date').datepicker({
     'format': 'dd/mm/yyyy',
     'autoclose': true
@@ -87,14 +89,30 @@ $('#book_time').timepicker({
 });
 
 var btn_reservation = document.getElementById("btn_reservation");
-console.log(btn_reservation);
-
 btn_reservation.addEventListener('click', function () {
-
     var reservationId = document.getElementById("reservationId").value;
-    console.log(reservationId);
-
     if (reservationId === '') {
         alert('Hãy đăng nhập');
     }
 });
+
+
+
+
+
+//// Lấy tất cả các nút danh mục
+//var categoryButtons = document.querySelectorAll(".category-button");
+//Console.log(categoryButtons);
+//// Lặp qua từng nút danh mục và gắn sự kiện click
+//categoryButtons.forEach(function (button) {
+//    button.addEventListener("click", function () {
+//        // Lấy giá trị của thuộc tính "value" của nút danh mục
+//        var categoryValue = button.getAttribute("value");
+
+//        // Tạo URL mới với giá trị danh mục
+//        var newUrl = "/Specialties/Index?foodcategoryid=" + categoryValue;
+
+//        // Chuyển đến URL mới
+//        window.location.href = newUrl;
+//    });
+//});

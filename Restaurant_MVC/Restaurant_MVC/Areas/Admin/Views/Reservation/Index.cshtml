@@ -1,0 +1,165 @@
+﻿@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reservations</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<form asp-action="Index" asp-controller="Reservation">
+    <p>
+        Tìm tên sản phẩm: @Html.TextBox("SearchString", Model.CurrentFilter as String)
+        <input type="submit" , value="Tìm kiếm" />
+    </p>
+</form>
+
+<div id="ajax-container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td></td>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    CreateDate
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = (Model.CurrentPage - 1) * Model.PageSize + 1;
+            }
+            <form asp-action="ApproveReservations">
+                @foreach (var item in Model.GetAllReservation)
+                {
+                    @if (item.IsApproved == false)
+                    {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selectedReservations" value="@item.ReservationsId" />
+                        </td>
+                        <td>
+                                @count
+                        </td>
+
+                        <td>
+                                @item.Name
+                        </td>
+                        <td>
+                                @item.Email
+                        </td>
+                        <td>
+                                @item.Phone
+                        </td>
+                        <td>
+                                @item.CreatedDate?.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                                @Html.ActionLink("Edit", "Edit", new { id=item.ReservationsId }) |
+                                @Html.ActionLink("Details", "Details", new { id=item.ReservationsId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id=item.ReservationsId })
+                        </td>
+                    </tr>
+                    }
+                    count++;
+                }
+            <tr>
+                <td colspan="4">
+                    <input id="" type="submit" value="Browse Reservations" />
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+    <!-- Hiển thị phân trang -->
+    <div class="pagination-container">
+        @Html.PagedListPager(Model.GetAllReservation, page => Url.Action("Index", new {page,page1 = Model.CurrentPage1, currentFilter = Model.CurrentFilter}))
+    </div>
+
+    <hr />
+
+    <h1>
+        IsApproved
+    </h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    CreateDate
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count1 = (Model.CurrentPage1 - 1) * Model.PageSize + 1;
+            }
+            <form asp-action="ApproveReservations">
+                @foreach (var item in Model.GetAllReservationss)
+                {
+                    @if (item.IsApproved == true)
+                    {
+                    <tr>
+                        <td>
+                                @count1
+                        </td>
+                        <td>
+                                @item.Name
+                        </td>
+                        <td>
+                                @item.Email
+                        </td>
+                        <td>
+                                @item.Phone
+                        </td>
+                        <td>
+                                @item.CreatedDate?.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                                @Html.ActionLink("Details", "Details", new { id=item.ReservationsId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id=item.ReservationsId })
+                        </td>
+                    </tr>
+                    }
+                    count1++;
+                }
+            </form>
+        </tbody>
+    </table>
+    <!-- Hiển thị phân trang -->
+    <div class="pagination-container">
+        @Html.PagedListPager(Model.GetAllReservationss, page1 => Url.Action("Index", new {page = Model.CurrentPage,page1, currentFilter = Model.CurrentFilter}))
+    </div>
+</div>

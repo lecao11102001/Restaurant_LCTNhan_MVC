@@ -6,6 +6,7 @@ using Restaurant_MVC.Entities;
 using Restaurant_MVC.Models.Mapping;
 using Restaurant_MVC.Models.SharedData;
 using Restaurant_MVC.Service;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +18,17 @@ builder.Services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlSer
 
 //
 builder.Services.AddSingleton<IDataSharingService, DataSharingService>();
-builder.Services.AddTransient<ISpecialties, SpecialtiesService>();
+builder.Services.AddTransient<ISpecialties,SpecialtiesService>();
 builder.Services.AddTransient<IHome, HomeService>();
 builder.Services.AddTransient<IReservation, ReservationService>();
 builder.Services.AddTransient<IContactUs, ContactUsService>();
-builder.Services.AddTransient<IStories, StoriesService>();
+builder.Services.AddTransient<INews, NewsService>();
+builder.Services.AddTransient<IEvents, EventsService>();
+builder.Services.AddTransient<ICategories, CategoriesService>();
+builder.Services.AddTransient<IFoodItemEvents, FoodItemEventsService>();
+
+
+
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddAutoMapper(typeof(Program));
@@ -62,35 +69,35 @@ app.UseEndpoints(endpoints =>
         pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
     );
 
-    endpoints.MapAreaControllerRoute(
-        name: "Reservation",
-        areaName: "Reservation",
-        pattern: "Reservation/{controller=Reservation}/{action=Index}"
-    );
+    ////endpoints.MapAreaControllerRoute(
+    ////    name: "Reservation",
+    ////    areaName: "Reservation",
+    ////    pattern: "Reservation/{controller=Reservation}/{action=Index}"
+    ////);
 
-    endpoints.MapAreaControllerRoute(
-        name: "ContactUs",
-        areaName: "ContactUs",
-        pattern: "ContactUs/{controller=ContactUs}/{action=Index}"
-    );
+    ////endpoints.MapAreaControllerRoute(
+    ////    name: "ContactUs",
+    ////    areaName: "ContactUs",
+    ////    pattern: "ContactUs/{controller=ContactUs}/{action=Index}"
+    ////);
 
-    endpoints.MapAreaControllerRoute(
-        name: "Stories",
-        areaName: "Stories",
-        pattern: "Stories/{controller=Stories}/{action=Index}"
-    );
+    ////endpoints.MapAreaControllerRoute(
+    ////    name: "Stories",
+    ////    areaName: "Stories",
+    ////    pattern: "Stories/{controller=Stories}/{action=Index}"
+    ////);
 
-    endpoints.MapAreaControllerRoute(
-        name: "Specialties",
-        areaName: "Specialties",
-        pattern: "Specialties/{controller=Specialties}/{action=Index}"
-    );
+    ////endpoints.MapAreaControllerRoute(
+    ////    name: "Specialties",
+    ////    areaName: "Specialties",
+    ////    pattern: "Specialties/{controller=Specialties}/{action=Index}"
+    ////);
 
     endpoints.MapControllerRoute(
         name: "areaRoute",
         pattern: "{area:exists}/{controller}/{action}/{id?}"
     );
-    
+
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"

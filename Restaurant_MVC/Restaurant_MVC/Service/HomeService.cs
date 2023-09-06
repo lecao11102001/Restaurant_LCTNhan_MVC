@@ -1,16 +1,21 @@
 ﻿using Restaurant_MVC.Interface;
 using Restaurant_MVC.Entities;
 using Restaurant_MVC.Common;
+using Restaurant_MVC.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Restaurant_MVC.Service
 {
     public class HomeService : IHome
     {
         private readonly RestaurantsDbContext _restaurantsDbContext;
+        private readonly IMapper _mapper;
 
-        public HomeService(RestaurantsDbContext restaurantsDbContext)
+        public HomeService(RestaurantsDbContext restaurantsDbContext, IMapper mapper)
         {
             _restaurantsDbContext = restaurantsDbContext;
+            _mapper = mapper;
         }
 
         public List<FoodCategory> GetAllFoodCategories()
@@ -33,28 +38,26 @@ namespace Restaurant_MVC.Service
             return _restaurantsDbContext.Menus.ToList();
         }
 
-        public Page<Events> GetPageStoriesItem(int page = 1)
+        public List<Events> GetAllEvent()
         {
-            int pageSize = 2;
-            var skip = (page - 1) * pageSize;
+            return _restaurantsDbContext.Eventss.ToList();
+        }
+        
+        public List<Customer> GetAllCustomer()
+        {
+            return _restaurantsDbContext.Customers.ToList();
+        }
 
-            // Item
-            var pagedItems = _restaurantsDbContext.Eventss.Skip(skip).Take(pageSize).ToList();
+        public void UpdateCustomers(UpdateModel up)
+        {
+            var existingCate = _restaurantsDbContext.Customers.FirstOrDefault(x => x.CustomerId == up.CustomerId);
 
-            // Tổng items
-            var totalItems = _restaurantsDbContext.Eventss.Count();
-
-            // Tổng trang
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-
-            var result = new Page<Events>
+            if (existingCate != null)
             {
-                Items = pagedItems,
-                CurrentPage = page,
-                TotalPages = totalPages
-            };
+                _mapper.Map(up, existingCate); // Cập nhật thông tin từ ReservationModel vào existingCate
 
-            return result;
+                _restaurantsDbContext.SaveChanges();
+            }
         }
     }
 }

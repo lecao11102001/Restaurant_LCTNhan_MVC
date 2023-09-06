@@ -1,0 +1,92 @@
+﻿@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "FoodItemEvents";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>FoodItemEvents</h1>
+
+<p>
+    <a asp-action="CreateFoodItemEvent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                FoodName
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                EventName
+            </th>
+            <th>
+                DiscountAmount
+            </th>
+            <th>
+                StartDate
+            </th>
+            <th>
+                EndDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FoodItemEvent)
+        {
+            <tr>
+                @foreach (var item1 in Model.ListFoodItems)
+                {
+                    if (item.FoodItemId == item1.FoodItemId)
+                    {
+                        <td>
+                            @item1.Name
+                        </td>
+                        <td>
+                            @item1.Price
+                        </td>
+                    }
+                }
+
+                @foreach (var item1 in Model.ListEvents)
+                {
+                    if (item.EventId == item1.EventId)
+                    {
+                        <td>
+                            @item1.Name
+                        </td>
+                        <td>
+                            @item1.DiscountAmount
+                        </td>
+                        <td>
+                            @item1.StartDate?.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @item1.EndDate?.ToString("dd/MM/yyyy")
+                        </td>
+                    }
+                }
+
+                <td>
+                    @* @Html.ActionLink("Edit", "Edit", new { id=item.FoodItemEventId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.FoodItemEventId }) | *@
+                    @Html.ActionLink("Delete", "DeleteEvents", new { id=item.FoodItemEventId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pagination-container">
+    @Html.PagedListPager(Model.FoodItemEvent, page => Url.Action("FoodItemEvents", new {page}))
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

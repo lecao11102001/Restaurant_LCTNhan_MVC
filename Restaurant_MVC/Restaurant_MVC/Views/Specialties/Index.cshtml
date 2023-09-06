@@ -1,0 +1,167 @@
+﻿@using System.Linq;
+@using Microsoft.EntityFrameworkCore;
+@using Restaurant_MVC.Service;
+@using X.PagedList.Mvc.Core;
+@model Restaurant_MVC.Common.Model;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- slider section -->
+<section class="slider_section ">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-6 ">
+                            <div class="detail-box">
+                                <h1>
+                                    Fast Food Restaurant
+                                </h1>
+                                <p>
+                                    Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                </p>
+                                <div class="btn-box">
+                                    <a href="" class="btn1">
+                                        Order Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-6 ">
+                            <div class="detail-box">
+                                <h1>
+                                    Fast Food Restaurant
+                                </h1>
+                                <p>
+                                    Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                </p>
+                                <div class="btn-box">
+                                    <a href="" class="btn1">
+                                        Order Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-6 ">
+                            <div class="detail-box">
+                                <h1>
+                                    Fast Food Restaurant
+                                </h1>
+                                <p>
+                                    Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                </p>
+                                <div class="btn-box">
+                                    <a href="" class="btn1">
+                                        Order Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol class="carousel-indicators">
+                <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+                <li data-target="#customCarousel1" data-slide-to="1"></li>
+                <li data-target="#customCarousel1" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </div>
+
+</section>
+<!-- end slider section -->
+    </div>
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Our Menu
+            </h2>
+        </div>
+
+        <form asp-action="Index">
+            <ul class="filters_menu">
+                <button style="border-radius: 10px;">All</button>
+                @foreach (var item in Model.ListFoodCategories)
+                {
+                    <button class="category-button" style="border-radius: 10px;" name="foodcategoryid" value="@item.FoodCategoryId">
+                        @item.Name
+                    </button>
+                }
+            </ul>
+
+            <div class="filters-content">
+                <div class="row grid">
+                    @foreach (var item in Model.Select_ListFoodItem)
+                    {
+                        <div class="col-sm-6 col-lg-4 all">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="/images/@item.Images" alt="">
+
+                                    </div>
+
+                                    <div class="detail-box">
+                                        <h5 style="display: inline;">
+                                            @item.Name
+                                        </h5>
+                                        @if (item.DiscountAmount.HasValue)
+                                        {
+                                            <span style="float: right; padding: 2px;background-color: #f9f9f9; color: #e74c3c;font-weight: bold; font-size: 12px;">
+                                                <i class="nav-icon fas fa-arrow-down"></i>
+                                                @item.DiscountAmount%
+                                            </span>
+                                        }
+                                        @* <p>
+                                    @item.Description
+                                    </p> *@
+                                        <div class="options">
+                                            @if (item.DiscountedPrice.HasValue)
+                                            {
+                                                <h6 style="text-decoration: line-through;">
+                                                    Price: @item.Price
+                                                </h6>
+                                                <h6>
+                                                    DiscountedPrice: @item.DiscountedPrice
+                                                </h6>
+                                            }
+                                            else
+                                            {
+                                                <h6>
+                                                    Price: @item.Price
+                                                </h6>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="pagination-container" style="padding-top: 5px;">
+                    @Html.PagedListPager(Model.Select_ListFoodItem, page => Url.Action("Index", new {page, foodcategoryid = ViewBag.FoodCategoryId }))
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

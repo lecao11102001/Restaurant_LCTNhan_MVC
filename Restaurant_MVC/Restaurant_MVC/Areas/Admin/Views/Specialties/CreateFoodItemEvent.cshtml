@@ -1,0 +1,88 @@
+﻿@model Restaurant_MVC.Common.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "CreateFoodItemEvent";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateFoodItemEvent</h1>
+
+<h4>FoodItemEvent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">FoodCategories</label>
+            <form asp-action="CreateFoodItemEvent">
+                <select name="selectedFoodCategory" class="form-control">
+                    <option>Select Categories</option>
+                    @foreach (var item in Model.ListFoodCategories)
+                    {
+                        <option value="@item.FoodCategoryId">@item.Name</option>
+                    }
+                </select>
+                <input type="submit" value="Show" />
+            </form>
+        </div>
+        <form asp-action="CreateFoodItemEvents">
+
+            @* <div class="form-group">
+                <label class="control-label">FoodName</label>
+                <select name="FoodItemId" id="FoodItemId" class="form-control">
+                    <option>Select Food</option>
+                    @foreach (var item in Model.ListFoodItems)
+                    {
+                        <option value="@item.FoodItemId">@item.Name</option>
+                    }
+                </select>
+            </div> *@
+
+            <div class="form-group">
+                <label class="control-label">EventName</label>
+                <select name="EventId" class="form-control">
+                    @* <option value="">Select Event</option> *@
+                    @foreach (var item in Model.ListEvents)
+                    {
+                        <option value="@item.EventId">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="" value="" id="masterCheckbox" />
+                        </th>
+                        <th>
+                            FoodName
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Select_ListFoodItems)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="childCheckbox" name="selectedFoodItems" value="@item.FoodItemId" />
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

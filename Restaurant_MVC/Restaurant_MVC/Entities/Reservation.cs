@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Restaurant_MVC.Common;
 
 namespace Restaurant_MVC.Entities
 {
@@ -25,6 +26,10 @@ namespace Restaurant_MVC.Entities
         public DateTime? Time { get; set; }
 
         public int? NumberOfGuests { get; set; }
+
+        public string? Status { get; set; }
+
+        public bool? IsApproved { get; set; }
 
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
